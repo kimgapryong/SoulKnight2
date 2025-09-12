@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4534848816e78c54799f9bfd0539c118, type: 3}
+  m_Name: NormalArcher
+  m_EditorClassIdentifier: 
+  CreatureName: "\uAE40\uD6A8\uC6D0"
+  Image: {fileID: -2076367042, guid: 8bc2dceed53ac6a4abc61b38b54e618f, type: 3}
+  Path: NormalArcher
+  Level: 1
+  Exp: 100
+  Hp: 120
+  Mp: 80
+  Damage: 12
+  Defence: 5
+  AtkSpeed: 1.2
+  Speed: 20
+  Critical: 30
+  Arange: 5.2
+  MoveArange: 0
+  HeroType: 1
+  Amount: 0

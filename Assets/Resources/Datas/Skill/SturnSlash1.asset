@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6922b3a796aace468a55920d4004d27, type: 3}
+  m_Name: SturnSlash1
+  m_EditorClassIdentifier: 
+  SkillName: "\uC2A4\uD134"
+  Image: {fileID: 21300000, guid: b4cb6170a8b8aba46809d9a550cf2f96, type: 3}
+  Target: 1
+  SkillPoint: 2
+  Damage: 100
+  Mp: 10
+  CoolTime: 12
+  Again: 0
+  Persent: 50
+  PersentTime: 2
+  SkillTime: 0
+  DotDamage: 0
+  DotSpeed: 0
+  Hp: 0
+  AtkSpeed: 0
+  Pdamage: 0
+  Speed: 0
