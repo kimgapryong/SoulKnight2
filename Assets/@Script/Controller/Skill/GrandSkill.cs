@@ -13,6 +13,9 @@ public class GrandSkill : Skill_Base
         foreach(var value in _data)
         {
             _skillDataDic[value.Type] = value.Datas[0];
+            bool[] boolean = GetBoolean(value.Type);
+            boolean[0] = true;
+            SetBoolean(value.Type, boolean);
         }
 
         return true;
@@ -66,6 +69,7 @@ public class GrandSkill : Skill_Base
             StartCoroutine(WaitCool(time, () =>
             {
                 creature.target.OnDamage(creature, GetDamage(data.Damage));
+                Destroy(clone);
             }));
         }
 
@@ -108,13 +112,16 @@ public class GrandSkill : Skill_Base
         skill_4 = true;
         List<MonsterController> monsters = Manager.Creature.SearchAllMonster(creature as PlayerController);
 
+        Debug.Log($"¸ó½ºÅÍ°¹¼ö{monsters.Count}");
         foreach(var mon in monsters)
         {
-            GameObject clone = Manager.Resources.Instantiate("Skills/Slash", creature.target.transform.position, Quaternion.identity);
+            GameObject clone = Manager.Resources.Instantiate("Skills/Slash", mon.transform.position, Quaternion.identity);
             Animator anim = clone.GetComponent<Animator>();
 
-            anim.Play("SturnSlash");
-            
+            anim.Play("SutrnSlash");
+            float time = GetClipLength(anim, "SutrnSlash");
+
+            Destroy(clone.gameObject, time);
             if(Manager.Random.RollBackPercent(data.Persent))
                 mon.Sturn(data.PersentTime, GetDamage(data.Damage));
         }

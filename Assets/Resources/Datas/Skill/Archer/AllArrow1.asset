@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6922b3a796aace468a55920d4004d27, type: 3}
+  m_Name: AllArrow1
+  m_EditorClassIdentifier: 
+  SkillName: "\uD654\uC0B4\uBE44"
+  Image: {fileID: 21300000, guid: d04f89889340eb444bf068b70594b6a2, type: 3}
+  Explain: "\uB300\uC0C1 \uC8FC\uBCC0\uC73C\uB85C \uD654\uC0B4\uBE44 \uAD11\uC5ED\uC73C\uB85C
+    1\uD68C \uACF5\uACA9\uC744 \uD55C\uB2E4. (\uD0C0\uAC9F \uC8FC\uBCC0 3M)"
+  Target: 0
+  SkillPoint: 2
+  Damage: 120
+  Mp: 12
+  CoolTime: 6
+  Again: 0
+  Persent: 0
+  PersentTime: 0
+  SkillTime: 0
+  DotDamage: 0
+  DotSpeed: 0
+  Hp: 0
+  AtkSpeed: 0
+  Pdamage: 0
+  Speed: 0

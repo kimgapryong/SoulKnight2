@@ -23,8 +23,10 @@ public class ChangeFragment : UI_Base
     {
         Skill_Btn,
     }
+
+    private MainCanvas main;
     public Define.HeroType hero;
-    private Image selectImage;
+    public Image selectImage;
     public override bool Init()
     {
         if(base.Init() == false)
@@ -33,11 +35,26 @@ public class ChangeFragment : UI_Base
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindButton(typeof(Buttons));
-        selectImage = GetComponent<Image>();
+        selectImage = transform.Find("Character_Bg").GetComponent<Image>();
+
+        main._change = true;
 
         Refresh();
 
+        GetButton((int)Buttons.Skill_Btn).gameObject.BindEvent(() =>
+        {
+            Manager.UI.ShowPopUI<SkillPop>(callback: (pop) =>
+            {
+                pop.SetInfo(hero, Manager.Skill.GetSkill(hero));
+                Time.timeScale = 0f;
+            });
+        });
+
         return true;
+    }
+    public void SetInfo(MainCanvas main)
+    {
+        this.main = main;
     }
     public void ChangeCharacter(Define.HeroType type)
     {

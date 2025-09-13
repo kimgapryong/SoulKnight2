@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6922b3a796aace468a55920d4004d27, type: 3}
+  m_Name: Poison1
+  m_EditorClassIdentifier: 
+  SkillName: "\uD3EC\uC774\uC98C"
+  Image: {fileID: 21300000, guid: 00d8ad0ba8bdd54489a946ddf40a2391, type: 3}
+  Explain: "\uB300\uC0C1\uC5D0\uAC8C 2\uCD08\uAC04 \uB3C5(\uC774\uB3D9\uC18D\uB3C4
+    10% \uAC10\uC18C, \uC9C0\uC18D \uB370\uBBF8\uC9C0 1\uCD08\uB2F9 \uB370\uBBF8\uC9C0
+    10) \uBD80\uC5EC"
+  Target: 0
+  SkillPoint: 2
+  Damage: 0
+  Mp: 7
+  CoolTime: 10
+  Again: 0
+  Persent: 0
+  PersentTime: 0
+  SkillTime: 3
+  DotDamage: 5
+  DotSpeed: 10
+  Hp: 0
+  AtkSpeed: 0
+  Pdamage: 0
+  Speed: 0

@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6922b3a796aace468a55920d4004d27, type: 3}
-  m_Name: MultiSlash1
+  m_Name: Slash1
   m_EditorClassIdentifier: 
-  SkillName: "\uB2E4\uC911\uACF5\uACA9"
-  Image: {fileID: 21300000, guid: ba49e5618798f73458e249f4217f81ee, type: 3}
-  Target: 2
+  SkillName: "\uC218\uD3C9\uBC30\uAE30"
+  Image: {fileID: 21300000, guid: 00d8ad0ba8bdd54489a946ddf40a2391, type: 3}
+  Explain: "\uC815\uBA74 \uB300\uC0C1\uC5D0\uAC8C \uACF5\uACA9\uB825\uC758 120% \uACF5\uACA9
+    \uD55C\uB2E4."
+  Target: 0
   SkillPoint: 1
   Damage: 100
-  Mp: 12
+  Mp: 10
   CoolTime: 3
   Again: 0
   Persent: 0

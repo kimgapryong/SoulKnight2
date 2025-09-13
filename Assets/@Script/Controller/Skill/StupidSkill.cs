@@ -18,7 +18,7 @@ public class StupidSkill : Skill_Base
         foreach (MonsterController monster in monsters)
         {
             GameObject clone = Manager.Resources.Instantiate($"Skills/Magic", transform.position, Quaternion.identity);
-            Vector3 dir = (clone.transform.position - monster.transform.position).normalized;
+            Vector3 dir = (monster.transform.position - clone.transform.position).normalized;
 
             ProjectileController projectile = clone.AddComponent<ProjectileController>();
             projectile.SetInfo(creature, dir, 6, GetDamage(data.Damage));

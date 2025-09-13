@@ -138,7 +138,7 @@ public abstract class Skill_Base : BaseController
         for(int i = 0; i < count; i++)
         {
             GameObject clone = Manager.Resources.Instantiate($"Skills/{path}", transform.position, Quaternion.identity);
-            Vector3 dir = (clone.transform.position - creature.target.transform.position).normalized;
+            Vector3 dir = (creature.target.transform.position - clone.transform.position).normalized;
 
             ProjectileController projectile = clone.AddComponent<ProjectileController>();
             projectile.SetInfo(creature, dir, 6, damage);
@@ -149,7 +149,7 @@ public abstract class Skill_Base : BaseController
     }
     protected void MakeProjectile(string path, int count, float damage)
     {
-        Vector2 baseDir = (transform.position - creature.target.transform.position).normalized;
+        Vector2 baseDir = (creature.target.transform.position - transform.position).normalized;
         for(int i = 0; i < count; i++)
         {
             float angle = (i - (count - 1) * 0.5f) * 10f;
@@ -169,20 +169,33 @@ public abstract class Skill_Base : BaseController
 
         ProjectileController projectile = clone.AddComponent<ProjectileController>();
         projectile.SetChain();
+        Debug.Log(count);
 
         while (result < count)
         {
-            Vector3 dir = (clone.transform.position - target.transform.position).normalized;
-            while(Vector2.Distance(clone.transform.position, target.transform.position) > 0.1f)
+            if (target == null)
+            {
+                // 새 타겟 찾기
+                target = Manager.Creature.SearchMonster(clone.transform);
+                if (target == null)
+                    break; // 더 이상 체인할 대상 없음
+            }
+
+            Vector3 dir = (target.transform.position - clone.transform.position).normalized;
+            Debug.Log(dir);
+            while (target != null && Vector2.Distance(clone.transform.position, target.transform.position) > 0.1f)
             {
                 clone.transform.position += dir * speed * Time.deltaTime;
                 yield return null;
             }
 
+            // 타겟 갱신
             target = Manager.Creature.SearchMonster(clone.transform);
+            Debug.Log("다음");
             result++;
         }
         Destroy(clone);
+
     }
 }
 

@@ -20,6 +20,28 @@ public class InputController : BaseController
     {
         MoveMouse();
         SetTarget();
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Manager.Instance.ChangePlayer(Manager.Creature._playerList[0]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Manager.Instance.ChangePlayer(Manager.Creature._playerList[1]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Manager.Instance.ChangePlayer(Manager.Creature._playerList[2]);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+            Manager.Skill.GetSkill(Manager.Player._type)._skillDic[Define.Skill.Skill1]?.Invoke();
+        else if (Input.GetKeyDown(KeyCode.W))
+            Manager.Skill.GetSkill(Manager.Player._type)._skillDic[Define.Skill.Skill2]?.Invoke();
+        else if (Input.GetKeyDown(KeyCode.E))
+            Manager.Skill.GetSkill(Manager.Player._type)._skillDic[Define.Skill.Skill3]?.Invoke();
+        else if (Input.GetKeyDown(KeyCode.R))
+            Manager.Skill.GetSkill(Manager.Player._type)._skillDic[Define.Skill.Skill4]?.Invoke();
     }
     private void SetTarget()
     {
@@ -38,6 +60,7 @@ public class InputController : BaseController
             Manager.Player.SetTarget(monster);
         }
     }
+  
     private void MoveMouse()
     {
         worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

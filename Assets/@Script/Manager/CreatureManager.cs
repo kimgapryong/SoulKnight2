@@ -101,8 +101,8 @@ public class CreatureManager
         List<MonsterController> _monList = new List<MonsterController>();
         foreach(var mon in _monsterList.ToList())
         {
-            if (Vector2.Distance(mon.transform.position, player.transform.position) <= player.plaStatus.Arange)
-                _monsterList.Add(mon);
+            if (Vector2.Distance(mon.transform.position, player.transform.position) <= 10f)
+                _monList.Add(mon);
         }
         return _monList;
     }

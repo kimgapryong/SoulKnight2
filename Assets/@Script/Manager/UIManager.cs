@@ -35,7 +35,17 @@ public class UIManager
             canvas.sortingOrder = 0;
         }
     }
+    public void MakeItem<T>(Transform parent = null, string key = null, Action<T> callback = null) where T : UnityEngine.Component
+    {
+        if (string.IsNullOrEmpty(key))
+            key = typeof(T).Name;
 
+        Manager.Resources.Instantiate($"UI/Fragment/{key}", parent, (go) =>
+        {
+            T subItem = go.GetOrAddComponent<T>();
+            callback?.Invoke(subItem);
+        });
+    }
     public void MakeSubItem<T>(Transform parent = null, string key = null, Action<T> callback = null) where T : UI_Base
     {
         if(string.IsNullOrEmpty(key))

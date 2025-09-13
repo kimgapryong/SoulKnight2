@@ -211,5 +211,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75b96bebc37a66439011ee4ef505173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: []
+  _data:
+  - Type: 0
+    Datas:
+    - {fileID: 11400000, guid: f665506cf5db8c94db4c0a8058b7f71d, type: 2}
+  - Type: 1
+    Datas:
+    - {fileID: 11400000, guid: 567adde3575287f47b89dda32db2e05f, type: 2}
+  - Type: 2
+    Datas:
+    - {fileID: 11400000, guid: 481e7a842666bec4ebd187281e098303, type: 2}
+  - Type: 3
+    Datas:
+    - {fileID: 11400000, guid: b12468d4a85f61241b91323dd5e3f24b, type: 2}
   creature: {fileID: 0}

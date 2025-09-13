@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6922b3a796aace468a55920d4004d27, type: 3}
+  m_Name: ChainMagic1
+  m_EditorClassIdentifier: 
+  SkillName: "\uCCB4\uC774\uB2DD \uC0F7"
+  Image: {fileID: 21300000, guid: 52a223ad17d5ef446a96a1b9140371f9, type: 3}
+  Explain: "\uD0C0\uAC9F \uC8FC\uBCC0 2M \uC774\uB0B4 \uC801 \uCCB4\uC774\uB2DD 100%
+    \uACF5\uACA9 (\uCD5C\uB300 \uD0C0\uAC9F 2)"
+  Target: 0
+  SkillPoint: 2
+  Damage: 100
+  Mp: 5
+  CoolTime: 1
+  SkillArange: 0
+  Again: 2
+  Persent: 0
+  PersentTime: 0
+  SkillTime: 0
+  DotDamage: 0
+  DotSpeed: 0
+  Hp: 0
+  AtkSpeed: 0
+  Pdamage: 0
+  Speed: 0

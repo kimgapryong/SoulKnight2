@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6922b3a796aace468a55920d4004d27, type: 3}
+  m_Name: AllSlash1
+  m_EditorClassIdentifier: 
+  SkillName: "\uCC38\uACA9"
+  Image: {fileID: 21300000, guid: 80929235ace098041b4d671cdd2d86a5, type: 3}
+  Explain: "\uB300\uC0C1\uC5D0\uAC8C \uACF5\uACA9\uB825\uC758 100% \uACF5\uACA9 \uD55C\uB2E4. 
+    \uB300\uC0C1 \uD6C4\uBA74 1M\uC774\uB0B4 \uBAA8\uB4E0 \uC801\uC5D0\uAC8C 50%
+    \uACF5\uACA9 \uD55C\uB2E4"
+  Target: 0
+  SkillPoint: 2
+  Damage: 100
+  Mp: 10
+  CoolTime: 3
+  Again: 0
+  Persent: 0
+  PersentTime: 0
+  SkillTime: 0
+  DotDamage: 0
+  DotSpeed: 0
+  Hp: 0
+  AtkSpeed: 0
+  Pdamage: 0
+  Speed: 0

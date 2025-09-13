@@ -11,7 +11,7 @@ public class PlayerStatus : Status
     public Action<int> levelAction;
     public Action<int> skillAction;
 
-    private int _point;
+    private int _point = 99;
     public int Point
     {
         get { return _point; }  

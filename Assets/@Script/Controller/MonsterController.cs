@@ -38,6 +38,7 @@ public class MonsterController : CreatureController
     {
         monStatus = status;
         _status = status;
+        Speed = status.Speed;
     }
     public override void UpdateMethod()
     {
@@ -119,11 +120,15 @@ public class MonsterController : CreatureController
         target = Manager.Creature.SearchPlayer(this);
     }
 
-    public void Sturn(float time, float damange)
+    public void Sturn(float time, float damage)
     {
         sturn = true;
         sp.color = Color.gray;
         State = Define.State.Idle;
+
+        monStatus.CurHp -= damage;
+        StartCoroutine(WaitCool(time, () =>{ sturn = false; sp.color = Color.white; } ));
+
     }
     public override void OnDamage(CreatureController attker, float damage)
     {

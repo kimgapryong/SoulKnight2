@@ -11,27 +11,29 @@ public class SkillFragment : UI_Base
     {
         ItemImage,
     }
-   enum Texts
+    enum Texts
     {
         SkillName,
     }
+    private MainCanvas main;
     private Image itemImage;
     private Image useImage;
     public override bool Init()
     {
-        if(base.Init() == false )   
+        if (base.Init() == false)
             return false;
 
-    
-        return true;
-    }
-    public void SetInfo()
-    {
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         itemImage = GetComponent<Image>();
         useImage = GetImage((int)Images.ItemImage);
 
+        main._skill = true;
+        return true;
+    }
+    public void SetInfo(MainCanvas main)
+    {
+        this.main = main;
     }
     public void Refresh(Skill_Base skill)
     {
@@ -46,7 +48,7 @@ public class SkillFragment : UI_Base
                 {
                     useImage.sprite = value.Datas[0].Image;
                     useImage.color = Color.gray;
-                    GetText((int)Texts.SkillName).text = data.SkillName;
+                    GetText((int)Texts.SkillName).text = value.Datas[0].SkillName;
                     break;
                 }
                 Debug.Log(value);
@@ -56,7 +58,6 @@ public class SkillFragment : UI_Base
 
         _skill = data;
 
-        Debug.Log("¿Ö ¾ÈµÅ");
         itemImage.sprite = data.Image;
         useImage.sprite = data.Image;
         useImage.color = Color.white;

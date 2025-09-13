@@ -32,7 +32,7 @@ public class NormalSkill : Skill_Base
         foreach (MonsterController monster in monsters)
         {
             GameObject clone = Manager.Resources.Instantiate($"Skills/Arrow", transform.position, Quaternion.identity);
-            Vector3 dir = (clone.transform.position - monster.transform.position).normalized;
+            Vector3 dir = (monster.transform.position - clone.transform.position).normalized;
 
             ProjectileController projectile = clone.AddComponent<ProjectileController>();
             projectile.SetInfo(creature, dir, 6, GetDamage(data.Damage));
@@ -65,7 +65,7 @@ public class NormalSkill : Skill_Base
 
         skill_4 = true;
 
-        GameObject clone = Manager.Resources.Instantiate($"Skills/ArrowRain", creature.transform.position + Vector3.up * 5f, Quaternion.identity);
+        GameObject clone = Manager.Resources.Instantiate($"Skills/ArrowRain", creature.target.transform.position + Vector3.up * 5f, Quaternion.identity);
         ProjectileController projectile = clone.AddComponent<ProjectileController>();
         projectile.SetParticle(1.2f);
 
