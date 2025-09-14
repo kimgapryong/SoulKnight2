@@ -41,5 +41,7 @@ public class SlotFragment : UI_Base
 
         GetText((int)Texts.ItemCount).gameObject.SetActive(true);
         GetText((int)Texts.ItemCount).text = $"{datas.count}/{datas._data._data.MaxCount}";
+
+        gameObject.BindEvent(Manager.Bag.UseItem(Manager.Player._type));
     }
 }

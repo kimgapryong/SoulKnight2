@@ -69,7 +69,7 @@ public class MainCanvas : UI_Scene
         }
         SlotRefresh();
     }
-    private void SlotRefresh()
+    public void SlotRefresh()
     {
         PlayerController player = Manager.Player;
         ItemDatas[] datas = Manager.Bag.GetItemDatas(player._type);
@@ -77,7 +77,6 @@ public class MainCanvas : UI_Scene
 
         for(int i = 0; i < datas.Length; i++)
         {
-            Debug.Log(datas[i].count);
             if (datas[i].count == 0)
                 _slotList[i].DeSet();
             else

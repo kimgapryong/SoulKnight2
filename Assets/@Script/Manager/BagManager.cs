@@ -21,7 +21,7 @@ public class BagManager
         if(_itemDataDic.TryGetValue(type, out datas) == false)
             return false;
 
-        Debug.Log("더줘");
+        
         //가방에 원래 있는지
         for(int i = 0; i < datas.Length; i++)
         {
@@ -49,8 +49,27 @@ public class BagManager
                 return true;
             }
         }
-        Debug.Log("추가");
+        
+        MainCanvas main = Manager.UI.SceneUI as MainCanvas;
+        main.SlotRefresh();
         return false;
+    }
+    public void UseItem(Define.HeroType type, Item_Base item)
+    {
+        ItemDatas[] items = GetItemDatas(type);
+        for(int i = 0; i < items.Length;i++)
+        {
+            if (items[i]._data != item)
+                continue;
+
+
+            if (items[i].count <= 0)
+                return;
+
+            items[i].count--;
+            items[i].itemAction?.Invoke();
+            _itemDataDic[type] = items; 
+        }
     }
     public void Init()
     {
