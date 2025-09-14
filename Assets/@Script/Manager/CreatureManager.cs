@@ -55,12 +55,15 @@ public class CreatureManager
         });
         return mon;
     }
-    public PlayerController SearchPlayer(MonsterController monster)
+    public PlayerController SearchPlayer(Transform monster, PlayerController pla = null)
     {
         PlayerController curPlayer = null;
         float minValue = float.MaxValue;
         foreach(PlayerController player in _playerList)
         {
+            if (pla == player)
+                continue;
+
             float curValue = Vector2.Distance(monster.transform.position, player.transform.position);
             if (curValue < minValue)
             {
@@ -80,13 +83,25 @@ public class CreatureManager
         }
         return playerList;
     }
-    public MonsterController SearchMonster(Transform player)
+    public PlayerController SearchNonDeathPlayer(PlayerController player)
+    {
+        foreach(var pla in _playerList)
+        {
+            if (pla._die == true)
+                return pla;
+            else
+                return SearchNonDeathPlayer(pla);
+        }
+
+        return null;
+    }
+    public MonsterController SearchMonster(Transform player, MonsterController mon = null)
     {
         MonsterController curMonster = null;
         float minValue = float.MaxValue;
         foreach(MonsterController monster in _monsterList)
         {
-            if (monster == null) continue;
+            if (monster == null || mon == monster) continue;
             float curValue = Vector2.Distance(player.position, monster.transform.position);
             if(curValue < minValue)
             {

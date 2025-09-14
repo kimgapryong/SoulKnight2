@@ -5,6 +5,7 @@ using static Define;
 
 public class GrandSkill : Skill_Base
 {
+    private PlayerController player;
     public override bool Init()
     {
         if(base.Init() == false)
@@ -17,7 +18,7 @@ public class GrandSkill : Skill_Base
             boolean[0] = true;
             SetBoolean(value.Type, boolean);
         }
-
+        player = GetComponent<PlayerController>();
         return true;
     }
     public override void Skill1()
@@ -29,6 +30,7 @@ public class GrandSkill : Skill_Base
             return;
 
         skill_1 = true;
+        
 
         GameObject clone = Manager.Resources.Instantiate("Skills/Slash", creature.target.transform.position, Quaternion.identity);
         Animator anim = clone.GetComponent<Animator>();
@@ -41,7 +43,10 @@ public class GrandSkill : Skill_Base
             Destroy(clone);
         }));
 
-        StartCoroutine(WaitCool(data.CoolTime, () => { skill_1 = false; }));
+        if (player.fight)
+            StartCoroutine(WaitCool(1f, () => { skill_1 = false; }));
+        else
+            StartCoroutine(WaitCool(data.CoolTime, () => { skill_1 = false; }));
     }
 
     public override void Skill2()
@@ -73,7 +78,10 @@ public class GrandSkill : Skill_Base
             }));
         }
 
-        StartCoroutine(WaitCool(data.CoolTime, () => { skill_2 = false; }));
+        if (player.fight)
+            StartCoroutine(WaitCool(1f, () => { skill_2 = false; }));
+        else
+            StartCoroutine(WaitCool(data.CoolTime, () => { skill_2 = false; }));
 
     }
 
@@ -97,8 +105,10 @@ public class GrandSkill : Skill_Base
         ProjectileController projectile = clone.AddComponent<ProjectileController>();
         projectile.SetInfo(creature, dir, 6, GetDamage(data.Damage));
         Destroy(clone.gameObject, time);
-
-        StartCoroutine(WaitCool(data.CoolTime, () => { skill_3 = false; }));
+        if (player.fight)
+            StartCoroutine(WaitCool(1f, () => { skill_3 = false; }));
+        else
+            StartCoroutine(WaitCool(data.CoolTime, () => { skill_3 = false; }));
     }
 
     public override void Skill4()
@@ -125,8 +135,10 @@ public class GrandSkill : Skill_Base
             if(Manager.Random.RollBackPercent(data.Persent))
                 mon.Sturn(data.PersentTime, GetDamage(data.Damage));
         }
-
-        StartCoroutine(WaitCool(data.CoolTime, () => { skill_4 = false; }));
+        if (player.fight)
+            StartCoroutine(WaitCool(1f, () => { skill_4 = false; }));
+        else
+            StartCoroutine(WaitCool(data.CoolTime, () => { skill_4 = false; }));
     }
 
   

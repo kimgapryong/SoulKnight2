@@ -37,7 +37,7 @@ public class StupidSkill : Skill_Base
 
         skill_2 = true;
 
-        StartCoroutine(Chain("Magic", data.Again, GetDamage(data.Damage), 7));
+        StartCoroutine(Chain("Magic", data.Again, GetDamage(data.Damage), 11));
         StartCoroutine(WaitCool(data.CoolTime, () => { skill_2 = false; }));
     }
 

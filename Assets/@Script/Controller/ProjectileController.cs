@@ -30,8 +30,10 @@ public class ProjectileController : BaseController
         check = true;
         Destroy(gameObject, time);
     }
-    public void SetChain()
+    public void SetChain(float damage, CreatureController attker)
     {
+        this.attker = attker;
+        this.damage = damage;
         chain = true;
     }
     private void AlignRotationToDir()
@@ -58,11 +60,13 @@ public class ProjectileController : BaseController
         else if(attker is MonsterController)
             m = collision.GetComponent<PlayerController>();
 
+        Debug.Log(m);
         if(m == null) return;
 
+        Debug.Log(damage + "µ¥¹ÌÁö");
         m.OnDamage(attker,damage);
 
-        if (!penetration || !check)
+        if (!penetration && !chain)
             Destroy(gameObject);
     }
 }

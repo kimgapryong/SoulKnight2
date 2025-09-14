@@ -13,7 +13,7 @@ public class CreatureController : BaseController
     public Skill_Base _skill;
 
     protected bool _damage;
-    protected bool _die;
+    public bool _die;
 
     public SpriteRenderer sp;
     public Animator anim;

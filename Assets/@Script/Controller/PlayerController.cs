@@ -9,13 +9,18 @@ public class PlayerController : CreatureController
 
     public PlayerState playerState;
     public AutoState autoState;
-    
 
     public PlayerStatus plaStatus;
     private string animKey;
 
     public bool targeting;
     public bool isAtk;
+
+    public Coroutine _fightCor;
+    public Coroutine _magicCor;
+    public bool fight;
+    public bool magic;
+    public bool potion;
 
     public override bool Init()
     {
@@ -26,6 +31,7 @@ public class PlayerController : CreatureController
         playerState = GetComponent<PlayerState>();
         autoState = GetComponent<AutoState>();
 
+        StartCoroutine(AddMp());
         return true;
     }
     public void SetStatus(PlayerStatus status)
@@ -113,5 +119,14 @@ public class PlayerController : CreatureController
         endPoint = point;
         State = Define.State.Move;
         Manager.Creature.SetState(this, State);
+    }
+
+    private IEnumerator AddMp()
+    {
+        while(true)
+        {
+            _status.CurMp += 1f;
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa2b7536b941154998946bf7ca0286e, type: 3}
+  m_Name: Mp1
+  m_EditorClassIdentifier: 
+  Type: 4
+  ItemName: "\uC57D\uD55C \uB9C8\uB098"
+  Image: {fileID: 21300000, guid: 9c1c2f5c3f7bc2a4b99091e84496410a, type: 3}
+  CoolTime: 0
+  Precent: 10
+  MaxCount: 10

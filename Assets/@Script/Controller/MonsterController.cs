@@ -20,6 +20,8 @@ public class MonsterController : CreatureController
     }
     protected override void ChangeAnim(Define.State state)
     {
+        if(anim == null)
+            return;
         switch (state)
         {
             case Define.State.Attack:
@@ -117,7 +119,7 @@ public class MonsterController : CreatureController
     }
     private void SearchPlayer()
     {
-        target = Manager.Creature.SearchPlayer(this);
+        target = Manager.Creature.SearchPlayer(transform);
     }
 
     public void Sturn(float time, float damage)

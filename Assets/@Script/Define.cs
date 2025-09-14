@@ -28,6 +28,14 @@ public class Define
         Skill3,
         Skill4,
     }
+    public enum Item
+    {
+        Fight,
+        Max,
+        Magic,
+        Hp1,
+        Mp1,
+    }
 
     public enum ColorType
     {

@@ -18,6 +18,8 @@ public class Manager : MonoBehaviour
     public static SkillManager Skill { get { return Instance._skill; } }
     private RandomManager _random = new RandomManager();
     public static RandomManager Random { get { return Instance._random; } }
+    private BagManager _bag = new BagManager();
+    public static BagManager Bag { get { return Instance._bag; } }  
     public static PlayerController Player { get; private set; }
 
     public Action ChangeAction;
@@ -49,5 +51,7 @@ public class Manager : MonoBehaviour
         }
         _instance = go.GetComponent<Manager>();
         DontDestroyOnLoad(go);
+
+        Bag.Init();
     }
 }

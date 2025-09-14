@@ -92,6 +92,7 @@ public abstract class Skill_Base : BaseController
         if(_status.CurMp <  skillData.Mp)
             return false;
 
+        _status.CurMp -= skillData.Mp;
         return true;
     }
     public SkillData GetSkillData(Define.Skill skill)
@@ -168,30 +169,27 @@ public abstract class Skill_Base : BaseController
         GameObject clone = Manager.Resources.Instantiate($"Skills/{path}", transform.position, Quaternion.identity);
 
         ProjectileController projectile = clone.AddComponent<ProjectileController>();
-        projectile.SetChain();
-        Debug.Log(count);
+        projectile.SetChain(damage, creature);
 
         while (result < count)
         {
             if (target == null)
             {
                 // 새 타겟 찾기
-                target = Manager.Creature.SearchMonster(clone.transform);
+                target = Manager.Creature.SearchMonster(clone.transform, target as MonsterController);
                 if (target == null)
                     break; // 더 이상 체인할 대상 없음
             }
 
             Vector3 dir = (target.transform.position - clone.transform.position).normalized;
-            Debug.Log(dir);
-            while (target != null && Vector2.Distance(clone.transform.position, target.transform.position) > 0.1f)
+            while (target != null && Vector2.Distance(clone.transform.position, target.transform.position) > 0.5f)
             {
                 clone.transform.position += dir * speed * Time.deltaTime;
                 yield return null;
             }
 
             // 타겟 갱신
-            target = Manager.Creature.SearchMonster(clone.transform);
-            Debug.Log("다음");
+            target = Manager.Creature.SearchMonster(clone.transform, target as MonsterController);
             result++;
         }
         Destroy(clone);

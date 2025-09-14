@@ -6,7 +6,7 @@ public class Stage_1 : Stage_Base
 {
     public List<CreatureData> _plaData;
     public List<CreatureData> _monData;
-    public int monCount = 10;
+    public int monCount = 100;
     public override bool Init()
     {
         if(base.Init() == false)

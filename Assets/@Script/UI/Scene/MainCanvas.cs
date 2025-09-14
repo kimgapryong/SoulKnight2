@@ -20,9 +20,11 @@ public class MainCanvas : UI_Scene
     }
     public List<SkillFragment> _skillList = new List<SkillFragment>();
     public List<ChangeFragment> _changeList = new List<ChangeFragment>();
+    public List<SlotFragment> _slotList = new List<SlotFragment>();
 
     public bool _skill;
     public bool _change;
+    public bool _slot;
 
     public override bool Init()
     {
@@ -36,6 +38,9 @@ public class MainCanvas : UI_Scene
             skill.SetInfo(this);
         foreach(var change in _changeList)
             change.SetInfo(this);
+        foreach(var slot in _slotList)
+            slot.SetInfo(this);
+        
 
         Manager.Instance.ChangeAction -= ChangeAction;
         Manager.Instance.ChangeAction += ChangeAction;
@@ -62,11 +67,26 @@ public class MainCanvas : UI_Scene
 
             change.selectImage.color = Color.white;
         }
+        SlotRefresh();
     }
+    private void SlotRefresh()
+    {
+        PlayerController player = Manager.Player;
+        ItemDatas[] datas = Manager.Bag.GetItemDatas(player._type);
+        Debug.Log(datas.Length);
 
+        for(int i = 0; i < datas.Length; i++)
+        {
+            Debug.Log(datas[i].count);
+            if (datas[i].count == 0)
+                _slotList[i].DeSet();
+            else
+                _slotList[i].Set(datas[i]);
+        }
+    }
     private IEnumerator WaitAction(Action callback)
     {
-        while(!_skill || !_change)
+        while(!_skill || !_change || !_slot)
         {
             yield return null;
         }
