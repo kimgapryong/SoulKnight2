@@ -188,6 +188,12 @@ public class MonsterController : CreatureController
 
         pla.plaStatus.AddExp(monStatus.Amount);
         Manager.Creature._monsterList.Remove(this);
+        _monsterSpwaner.m_Spwaner.Remove(this);
         Destroy(gameObject);
+    }
+    private MonsterSpwaner _monsterSpwaner;
+    public void SetSpwanList(MonsterSpwaner spwan)
+    {
+        _monsterSpwaner = spwan;
     }
 }
