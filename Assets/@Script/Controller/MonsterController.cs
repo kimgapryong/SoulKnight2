@@ -9,6 +9,7 @@ public class MonsterController : CreatureController
 
     private bool sturn;
     public MonsterStatus monStatus;
+    private string animKey;
     public override bool Init()
     {
         if (base.Init() == false)
@@ -18,20 +19,30 @@ public class MonsterController : CreatureController
 
         return true;
     }
-    protected override void ChangeAnim(Define.State state)
+    protected override void ChangeAnim(Define.State type)
     {
         if(anim == null)
             return;
-        switch (state)
+        string key = "Side";
+        if (Mathf.Abs(dir.x) - Mathf.Abs(dir.y) < 0)
         {
+            if (dir.y < 0)
+                key = "F";
+            else if (dir.y > 0)
+                key = "B";
+        }
+        switch (type)
+        {
+            case Define.State.Idle:
+                animKey = $"Walk_{key}";
+                anim.Play(animKey);
+                break;
             case Define.State.Attack:
-                anim.Play("Hit");
+
                 break;
             case Define.State.Move:
-                anim.Play("Walk");
-                break;
-            case Define.State.Idle:
-                anim.Play("Walk");
+                animKey = $"Walk_{key}";
+                anim.Play(animKey);
                 break;
         }
     }
@@ -45,7 +56,23 @@ public class MonsterController : CreatureController
     public override void UpdateMethod()
     {
         SearchPlayer();
-        base.UpdateMethod();
+        float localY = (dir.x > 0) ? -180 : (dir.x < 0) ? 0 : transform.eulerAngles.y;
+        Vector3 newPos = transform.eulerAngles;
+        newPos.y = localY;
+        transform.eulerAngles = newPos;
+
+        switch (State)
+        {
+            case (Define.State.Idle):
+                Idle();
+                break;
+            case (Define.State.Move):
+                Move();
+                break;
+            case (Define.State.Attack):
+                Attack();
+                break;
+        }
     }
     protected override void Idle()
     {
@@ -85,6 +112,7 @@ public class MonsterController : CreatureController
             return;
 
         _atk = true;
+        anim.Play("Attack");
         Ability();
         StartCoroutine(WaitCool(_status.AtkSpeed, () => { State = Define.State.Move; _atk = false; }));
     }

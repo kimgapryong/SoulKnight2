@@ -45,6 +45,7 @@ public class CreatureManager
             Manager.UI.MakeSubItem<HpFragment>(monster.transform, "HpCanvas", (fa) =>
             {
                 fa.SetInfo(status);
+                fa.GetComponent<Canvas>().sortingOrder = 3;
             });
 
             status.SetData(data);
@@ -89,8 +90,6 @@ public class CreatureManager
         {
             if (pla._die == true)
                 return pla;
-            else
-                return SearchNonDeathPlayer(pla);
         }
 
         return null;

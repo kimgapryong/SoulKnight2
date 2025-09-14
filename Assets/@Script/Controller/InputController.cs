@@ -14,6 +14,8 @@ public class InputController : BaseController
 
         _team = GameObject.Find("Team").transform;
 
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(_team);
         return true;
     }
     private void Update()

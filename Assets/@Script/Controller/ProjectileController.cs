@@ -25,9 +25,12 @@ public class ProjectileController : BaseController
         if (penetration)
             Destroy(gameObject, 5);
     }
-    public void SetParticle(float time)
+    public void SetParticle(float time, float damage, CreatureController attker)
     {
+        this.damage = damage;
+        this.attker = attker;
         check = true;
+        penetration= true;
         Destroy(gameObject, time);
     }
     public void SetChain(float damage, CreatureController attker)

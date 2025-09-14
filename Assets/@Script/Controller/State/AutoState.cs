@@ -46,13 +46,17 @@ public class AutoState : StateController
             player.State = Define.State.Idle;
             return;
         }
-        if (Vector2.Distance(player.target.transform.position, transform.position) <= player._status.Arange && player.isAtk)
+        if(player.target != null)
         {
-            Debug.Log("공격 체인지");
-            player.rb.velocity = Vector2.zero;
-            player.State = Define.State.Attack;
-            return;
+            if (Vector2.Distance(player.target.transform.position, transform.position) <= player._status.Arange && player.isAtk)
+            {
+                Debug.Log("공격 체인지");
+                player.rb.velocity = Vector2.zero;
+                player.State = Define.State.Attack;
+                return;
+            }
         }
+      
         player.dir = ((Vector3)player.endPoint - transform.position).normalized;
         player.rb.MovePosition(Vector2.MoveTowards(player.rb.position, player.endPoint, player._status.Speed * Time.deltaTime));
     }

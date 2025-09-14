@@ -34,6 +34,9 @@ public class BagManager
 
                 datas[i].count++;
                 _itemDataDic[type] = datas;
+
+                MainCanvas main = Manager.UI.SceneUI as MainCanvas;
+                main.SlotRefresh();
                 return true;
             }
         }
@@ -46,16 +49,19 @@ public class BagManager
                 ItemDatas newItem = new ItemDatas() { _data = data, count = 1, itemAction = data.ItemAblity };
                 datas[i] = newItem;
                 _itemDataDic[type] = datas;
+
+                MainCanvas main = Manager.UI.SceneUI as MainCanvas;
+                main.SlotRefresh();
                 return true;
             }
         }
         
-        MainCanvas main = Manager.UI.SceneUI as MainCanvas;
-        main.SlotRefresh();
+       
         return false;
     }
     public void UseItem(Define.HeroType type, Item_Base item)
     {
+        Debug.Log("아이템 사용");
         ItemDatas[] items = GetItemDatas(type);
         for(int i = 0; i < items.Length;i++)
         {
@@ -68,7 +74,12 @@ public class BagManager
 
             items[i].count--;
             items[i].itemAction?.Invoke();
-            _itemDataDic[type] = items; 
+            _itemDataDic[type] = items;
+
+            MainCanvas main = Manager.UI.SceneUI as MainCanvas;
+            main.SlotRefresh();
+            
+            break;
         }
     }
     public void Init()

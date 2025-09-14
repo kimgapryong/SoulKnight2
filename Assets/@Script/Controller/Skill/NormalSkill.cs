@@ -67,7 +67,7 @@ public class NormalSkill : Skill_Base
 
         GameObject clone = Manager.Resources.Instantiate($"Skills/ArrowRain", creature.target.transform.position + Vector3.up * 5f, Quaternion.identity);
         ProjectileController projectile = clone.AddComponent<ProjectileController>();
-        projectile.SetParticle(1.2f);
+        projectile.SetParticle(1.2f, GetDamage(data.Damage), creature);
 
         StartCoroutine(WaitCool(data.CoolTime, () => { skill_4 = false; }));
     }

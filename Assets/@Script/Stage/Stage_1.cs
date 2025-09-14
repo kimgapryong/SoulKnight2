@@ -12,6 +12,9 @@ public class Stage_1 : Stage_Base
         if(base.Init() == false)
             return false;
 
+        GameObject cam = Manager.Resources.Instantiate("Main Camera");
+        DontDestroyOnLoad(cam);
+
         Vector3 pos = Vector3.one;
         foreach(CreatureData data in _plaData)
         {
@@ -20,6 +23,7 @@ public class Stage_1 : Stage_Base
             pla.transform.position = newPos;
             pos = newPos;
 
+            DontDestroyOnLoad(pla);
         }
         
         foreach(CreatureData monData in _monData)
@@ -36,3 +40,4 @@ public class Stage_1 : Stage_Base
         return true;
     }
 }
+
