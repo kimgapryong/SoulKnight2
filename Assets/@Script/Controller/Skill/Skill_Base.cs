@@ -138,6 +138,9 @@ public abstract class Skill_Base : BaseController
     {
         for(int i = 0; i < count; i++)
         {
+            if (creature.target == null)
+                continue;
+
             GameObject clone = Manager.Resources.Instantiate($"Skills/{path}", transform.position, Quaternion.identity);
             Vector3 dir = (creature.target.transform.position - clone.transform.position).normalized;
 

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4534848816e78c54799f9bfd0539c118, type: 3}
-  m_Name: Crab
+  m_Name: Poison
   m_EditorClassIdentifier: 
-  CreatureName: "\uD06C\uB7A9"
+  CreatureName: "\uB3C5\uBB3C"
   Image: {fileID: 0}
-  Path: Zombie
+  Path: Poison
   Level: 1
   Exp: 0
-  Hp: 200
+  Hp: 100
   Mp: 10
-  Damage: 5
+  Damage: 10
   Defence: 10
   AtkSpeed: 1.2
   Speed: 7
   Critical: 20
-  Arange: 1.2
-  MoveArange: 6
+  Arange: 7
+  MoveArange: 10
   HeroType: 0
   Amount: 100
