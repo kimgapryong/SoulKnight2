@@ -334,7 +334,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ceec9b620111b634298f9b249b275d4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9539,6 +9539,7 @@ MonoBehaviour:
   _monData:
   - {fileID: 11400000, guid: 9e45697f99d3dfa4383d2a1eedf069e4, type: 2}
   - {fileID: 11400000, guid: 40280e459590e794e9503b86d4abec22, type: 2}
+  - {fileID: 11400000, guid: 0d71ce4642df91a4897cac2ee44b675e, type: 2}
   monCount: 10
 --- !u!4 &1214727364
 Transform:
@@ -9695,7 +9696,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ceec9b620111b634298f9b249b275d4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9722,63 +9723,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &8911565629241990481
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2758788008229488798, guid: ab95dc1fed6918b48895137884fc57c3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.6797054
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758788008229488798, guid: ab95dc1fed6918b48895137884fc57c3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.5205746
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758788008229488798, guid: ab95dc1fed6918b48895137884fc57c3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.322677
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758788008229488798, guid: ab95dc1fed6918b48895137884fc57c3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758788008229488798, guid: ab95dc1fed6918b48895137884fc57c3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758788008229488798, guid: ab95dc1fed6918b48895137884fc57c3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758788008229488798, guid: ab95dc1fed6918b48895137884fc57c3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758788008229488798, guid: ab95dc1fed6918b48895137884fc57c3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758788008229488798, guid: ab95dc1fed6918b48895137884fc57c3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758788008229488798, guid: ab95dc1fed6918b48895137884fc57c3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8911104295270780125, guid: ab95dc1fed6918b48895137884fc57c3, type: 3}
-      propertyPath: m_Name
-      value: Prank
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ab95dc1fed6918b48895137884fc57c3, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -9791,4 +9735,3 @@ SceneRoots:
   - {fileID: 674442789}
   - {fileID: 1909128020}
   - {fileID: 152240525}
-  - {fileID: 8911565629241990481}
