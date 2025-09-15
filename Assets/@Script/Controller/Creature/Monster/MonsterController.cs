@@ -5,12 +5,12 @@ using UnityEngine;
 public class MonsterController : CreatureController
 {
     public Define.MonsterType _type;
-    private bool _back;
-    private bool _atk;
+    protected bool _back;
+    protected bool _atk;
 
     private bool sturn;
     public MonsterStatus monStatus;
-    private string animKey;
+    protected string animKey;
     public override bool Init()
     {
         if (base.Init() == false)

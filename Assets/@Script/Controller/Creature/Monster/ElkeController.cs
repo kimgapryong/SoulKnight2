@@ -19,7 +19,7 @@ public class ElkeController : BossController
         });
 
         State = Define.State.Move;
-        StartCoroutine(StartSkill());
+       
         return true;
     }
     protected override void Attack()
@@ -43,4 +43,14 @@ public class ElkeController : BossController
 
         creature.OnDamage(this, 2000f);
     }
+    protected override IEnumerator StartSkill()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(5f, 8f));
+            Define.Skill curSkill = skillType[Random.Range(0, skillType.Length)];
+            _skill._skillDic[curSkill]?.Invoke();
+        }
+    }
+
 }
