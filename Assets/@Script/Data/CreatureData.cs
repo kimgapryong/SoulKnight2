@@ -27,5 +27,6 @@ public class CreatureData : ScriptableObject
     public Define.HeroType HeroType;
 
     [Header("∏ÛΩ∫≈Õ")]
+    public Define.MonsterType MonsterType;
     public float Amount;
 }

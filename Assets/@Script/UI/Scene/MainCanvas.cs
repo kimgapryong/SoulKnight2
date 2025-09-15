@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainCanvas : UI_Scene
 {
@@ -17,10 +18,13 @@ public class MainCanvas : UI_Scene
         ChangeContent1,
         ChangeContent2,
         ChangeContent3,
+        MissionContent,
+        Mission
     }
     public List<SkillFragment> _skillList = new List<SkillFragment>();
     public List<ChangeFragment> _changeList = new List<ChangeFragment>();
     public List<SlotFragment> _slotList = new List<SlotFragment>();
+    public List<MissionFragment> _missionList = new List<MissionFragment>();
 
     public bool _skill;
     public bool _change;
@@ -33,6 +37,7 @@ public class MainCanvas : UI_Scene
 
         BindImage(typeof(Images));
         BindObject(typeof(Objects));
+        GetObject((int)Objects.MissionContent).gameObject.SetActive(false);
 
         foreach(var skill in _skillList)
             skill.SetInfo(this);
@@ -81,6 +86,41 @@ public class MainCanvas : UI_Scene
                 _slotList[i].DeSet();
             else
                 _slotList[i].Set(datas[i]);
+        }
+    }
+    public void MissionRefresh()
+    {
+        GetObject((int)Objects.MissionContent).gameObject.SetActive(true);
+        foreach (var mission in _missionList)
+        {
+            _missionList.Remove(mission);
+            Destroy(mission.gameObject);
+        }
+
+        foreach(Define.MonsterType mon in System.Enum.GetValues(typeof(Define.MonsterType)))
+        {
+            MissionData? data = Manager.Game.GetMission(mon);
+
+            if(data == null)
+                continue;
+
+            Manager.UI.MakeSubItem<MissionFragment>(GetObject((int)Objects.Mission).transform, callback: (fa) =>
+            {
+                _missionList.Add(fa);
+                fa.SetInfo(data.Value.Type);
+            });
+        }
+        
+    }
+    public void MissionDeSet()
+    {
+        GetObject((int)Objects.MissionContent).gameObject.SetActive(false);
+    }
+    public void MissionFragemntRefresh()
+    {
+        foreach(var mission in _missionList)
+        {
+            mission.Refresh();
         }
     }
     private IEnumerator WaitAction(Action callback)

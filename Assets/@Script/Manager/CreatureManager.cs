@@ -40,6 +40,8 @@ public class CreatureManager
         Manager.Resources.Instantiate($"Monsters/{data.Path}", callback: (go) =>
         {
             MonsterController monster = go.GetOrAddComponent<MonsterController>();
+            monster._type = data.MonsterType;
+
             MonsterStatus status = go.GetOrAddComponent<MonsterStatus>();
 
             Manager.UI.MakeSubItem<HpFragment>(monster.transform, "HpCanvas", (fa) =>

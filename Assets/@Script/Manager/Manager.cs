@@ -20,6 +20,8 @@ public class Manager : MonoBehaviour
     public static RandomManager Random { get { return Instance._random; } }
     private BagManager _bag = new BagManager();
     public static BagManager Bag { get { return Instance._bag; } }  
+    private GameManager _game = new GameManager();
+    public static GameManager Game { get { return Instance._game; } }   
     public static PlayerController Player { get; private set; }
 
     public Action ChangeAction;

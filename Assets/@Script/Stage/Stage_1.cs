@@ -9,9 +9,7 @@ public class Stage_1 : Stage_Base
     public int monCount = 100;
     public override bool Init()
     {
-        if(base.Init() == false)
-            return false;
-
+       
         GameObject cam = Manager.Resources.Instantiate("Main Camera");
         DontDestroyOnLoad(cam);
 

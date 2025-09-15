@@ -41,6 +41,12 @@ public class Define
     {
         Poison,
     }
+    public enum MonsterType
+    {
+        Stage1,
+        Stage2,
+        Stage3,
+    }
     public static Color GetColor(ColorType type)
     {
         switch (type)

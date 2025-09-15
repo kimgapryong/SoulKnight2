@@ -9532,6 +9532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94fdf2fe3722e5409d1dd65a4eeb59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monValues: 
   _plaData:
   - {fileID: 11400000, guid: 22388b00d649b7345b27023103455709, type: 2}
   - {fileID: 11400000, guid: bc5c064e408a74c49af47b84ffcb32ce, type: 2}
@@ -9540,7 +9541,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9e45697f99d3dfa4383d2a1eedf069e4, type: 2}
   - {fileID: 11400000, guid: 40280e459590e794e9503b86d4abec22, type: 2}
   - {fileID: 11400000, guid: 0d71ce4642df91a4897cac2ee44b675e, type: 2}
-  monCount: 10
+  monCount: 0
 --- !u!4 &1214727364
 Transform:
   m_ObjectHideFlags: 0

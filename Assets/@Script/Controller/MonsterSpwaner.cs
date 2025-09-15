@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterSpwaner : BaseController
 {
-    public GameObject monsters;
+    public List<CreatureData> _monData = new List<CreatureData>();
     public List<MonsterController> m_Spwaner = new List<MonsterController>();
     public float timer;
     private Coroutine mCor;
@@ -18,18 +18,22 @@ public class MonsterSpwaner : BaseController
     private void Update()
     {
         if (m_Spwaner.Count <= 0 && mCor == null)
+        {
+            Debug.LogWarning("½ÇÇà");
             mCor = StartCoroutine(StartSpwan());
+        }
+            
+            
     }
     private void MonsterSpwan()
     {
-        GameObject clone = Instantiate(monsters, transform.position, Quaternion.identity);
-        clone.name = monsters.name;
-        foreach(MonsterController m in clone.transform.GetComponentsInChildren<MonsterController>(true))
+        foreach (CreatureData monData in _monData)
         {
-            m_Spwaner.Add(m);
-            m.SetSpwanList(this);
+            MonsterController mon = Manager.Creature.CreateMonster(monData);
+            mon.gameObject.transform.position = transform.position + new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-1.5f, 1.5f));
+            m_Spwaner.Add(mon);
+            mon.SetSpwanList(this);
         }
-            
     }
 
     private IEnumerator StartSpwan()

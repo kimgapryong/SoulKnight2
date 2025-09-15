@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterController : CreatureController
 {
+    public Define.MonsterType _type;
     private bool _back;
     private bool _atk;
 
@@ -142,6 +143,9 @@ public class MonsterController : CreatureController
     }
     private void NormalMove()
     {
+        if(target.transform.position == null)
+            return;
+
         dir = (target.transform.position - transform.position).normalized;
         rb.MovePosition(Vector2.MoveTowards(rb.position, target.transform.position, _status.Speed * Time.deltaTime));
     }
@@ -187,6 +191,7 @@ public class MonsterController : CreatureController
             return;
 
         pla.plaStatus.AddExp(monStatus.Amount);
+        Manager.Game.AddMissionvalue(_type);
         Manager.Creature._monsterList.Remove(this);
         _monsterSpwaner.m_Spwaner.Remove(this);
         Destroy(gameObject);

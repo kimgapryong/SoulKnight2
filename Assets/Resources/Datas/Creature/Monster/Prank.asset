@@ -27,4 +27,5 @@ MonoBehaviour:
   Arange: 1
   MoveArange: 4
   HeroType: 0
+  MonsterType: 1
   Amount: 100
