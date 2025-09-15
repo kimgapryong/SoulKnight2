@@ -19,12 +19,13 @@ MonoBehaviour:
   Exp: 100
   Hp: 100
   Mp: 60
-  Damage: 10
+  Damage: 1000
   Defence: 5
   AtkSpeed: 0.6
-  Speed: 20
+  Speed: 150
   Critical: 30
   Arange: 2.5
   MoveArange: 0
   HeroType: 0
+  MonsterType: 0
   Amount: 0

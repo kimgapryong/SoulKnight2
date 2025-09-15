@@ -93,11 +93,11 @@ public class MainCanvas : UI_Scene
         GetObject((int)Objects.MissionContent).gameObject.SetActive(true);
         foreach (var mission in _missionList)
         {
-            _missionList.Remove(mission);
             Destroy(mission.gameObject);
         }
+        _missionList.Clear();
 
-        foreach(Define.MonsterType mon in System.Enum.GetValues(typeof(Define.MonsterType)))
+        foreach (Define.MonsterType mon in System.Enum.GetValues(typeof(Define.MonsterType)))
         {
             MissionData? data = Manager.Game.GetMission(mon);
 

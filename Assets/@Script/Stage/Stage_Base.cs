@@ -6,11 +6,13 @@ public class Stage_Base : BaseController
 {
     public Dictionary<Define.MonsterType, bool> _monCheckDic = new Dictionary<Define.MonsterType, bool>();
     public int[] monValues;
-
+    private bool _stop;
     public override bool Init()
     {
         if(base.Init() == false)
             return false;
+
+        Manager.Creature.Clear();
 
         MainCanvas main = Manager.UI.SceneUI as MainCanvas;
         main.MissionDeSet();
@@ -26,6 +28,9 @@ public class Stage_Base : BaseController
 
     private void Update()
     {
+        if(_stop)
+            return;
+
         bool allTrue = true;
         foreach (var item in _monCheckDic.Values)
         {
@@ -39,7 +44,7 @@ public class Stage_Base : BaseController
         if (allTrue)
         {
             Complete();
-            allTrue = false;
+            _stop = true;
         }
     }
 

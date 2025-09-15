@@ -8,8 +8,9 @@ public class Stage_3 : Stage_Base
     public BossController boss;
     protected override void Complete()
     {
+        Debug.Log("컴플리트");
         foreach (var player in Manager.Creature._playerList)
-            player.transform.position = transform.position + Vector3.right * 0.5f;
+            player.transform.position = pos.position + Vector3.right * 0.5f;
 
         StartCoroutine(StartBoss());
     }

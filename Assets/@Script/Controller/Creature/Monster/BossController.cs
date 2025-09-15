@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,7 +12,7 @@ public class BossController : MonsterController
     public Define.Skill[] skillType;
 
     protected Action skillAction;
-    protected bool _useSkill;
+    public bool _useSkill;
 
     // 게임 시작용
     public bool startStage;
@@ -65,16 +66,19 @@ public class BossController : MonsterController
 
         status.SetData(bossData);
         SetStatus(status);
-        _back = true;
+        
     }
     protected override void Idle()
     {
-        if (_useSkill || target != null || !startStage)
+        
+        if (_useSkill || target == null || !startStage)
             return;
 
+        Debug.Log("왜");
         if (Vector2.Distance(transform.position, target.transform.position) <= _status.MoveArange)
         {
             State = Define.State.Move;
+            Debug.Log("왜 안들어와");
             return;
         }
     }
@@ -108,5 +112,21 @@ public class BossController : MonsterController
             Define.Skill curSkill = skillType[Random.Range(0, skillType.Length)];
             skillAction = _skill._skillDic[curSkill];
         }
+    }
+
+    public override void OnDamage(CreatureController attker, float damage)
+    {
+        if (_die || _damage)
+            return;
+
+        _damage = true;
+        sp.color = Color.red;
+        _status.CurHp -= damage;
+
+     
+            StartCoroutine(WaitCool(0.2f, () => { _damage = false; sp.color = Color.white; }));
+
+        if (_status.CurHp <= 0)
+            OnDie(attker);
     }
 }

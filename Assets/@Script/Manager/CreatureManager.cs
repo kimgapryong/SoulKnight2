@@ -155,5 +155,9 @@ public class CreatureManager
 
         Manager.Instance.ChangePlayer(pla);
     }
+    public void Clear()
+    {
+        _monsterList.Clear();
+    }
 
 }

@@ -17,7 +17,7 @@ public class GameManager
             if (monValues[index] > 0)
             {
                 stage._monCheckDic.Add(mon, false);
-                _missionDic.Add(mon, new MissionData() { Type = mon, CurMonster = 0,MaxMonster = monValues[index], CurStage = stage });
+                _missionDic[mon]= new MissionData() { Type = mon, CurMonster = 0,MaxMonster = monValues[index], CurStage = stage };
             }
                 
             index++;
