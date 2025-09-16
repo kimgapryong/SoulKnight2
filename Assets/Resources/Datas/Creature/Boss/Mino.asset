@@ -24,7 +24,7 @@ MonoBehaviour:
   AtkSpeed: 1.2
   Speed: 5
   Critical: 50
-  Arange: 1.2
+  Arange: 2
   MoveArange: 6
   HeroType: 0
   MonsterType: 0

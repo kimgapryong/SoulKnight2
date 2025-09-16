@@ -12,14 +12,23 @@ public class MainCanvas : UI_Scene
         Skill_2,
         Skill_3,
         Skill_4,
+        DeSkill,
+        Circle,
+        CircleSlider,
+        SkillPanel,
     }
     enum Objects
     {
+        Bg,
         ChangeContent1,
         ChangeContent2,
         ChangeContent3,
         MissionContent,
         Mission
+    }
+    enum Texts
+    {
+        Count_Txt,
     }
     public List<SkillFragment> _skillList = new List<SkillFragment>();
     public List<ChangeFragment> _changeList = new List<ChangeFragment>();
@@ -30,6 +39,9 @@ public class MainCanvas : UI_Scene
     public bool _change;
     public bool _slot;
 
+    public bool _can;
+    public bool _extiction;
+
     public override bool Init()
     {
         if(base.Init() == false)
@@ -37,16 +49,20 @@ public class MainCanvas : UI_Scene
 
         BindImage(typeof(Images));
         BindObject(typeof(Objects));
-        GetObject((int)Objects.MissionContent).gameObject.SetActive(false);
+        BindText(typeof(Texts));
 
-        foreach(var skill in _skillList)
+        GetObject((int)Objects.MissionContent).gameObject.SetActive(false);
+        GetImage((int)Images.Circle).gameObject.SetActive(false);
+        GetImage((int)Images.SkillPanel).gameObject.SetActive(false);
+
+        foreach (var skill in _skillList)
             skill.SetInfo(this);
         foreach(var change in _changeList)
             change.SetInfo(this);
         foreach(var slot in _slotList)
             slot.SetInfo(this);
-        
 
+        CanSkill();
         Manager.Instance.ChangeAction -= ChangeAction;
         Manager.Instance.ChangeAction += ChangeAction;
 
@@ -73,6 +89,18 @@ public class MainCanvas : UI_Scene
             change.selectImage.color = Color.white;
         }
         SlotRefresh();
+    }
+    public void CantSkill()
+    {
+        _can = true;
+        Manager.Input._canSkill = false;
+        GetImage((int)Images.DeSkill).gameObject.SetActive(true);
+    }
+    public void CanSkill()
+    {
+        _can = false;
+        Manager.Input._canSkill = true;
+        GetImage((int)Images.DeSkill).gameObject.SetActive(false);
     }
     public void SlotRefresh()
     {
@@ -111,6 +139,44 @@ public class MainCanvas : UI_Scene
             });
         }
         
+    }
+    public void Extinction(float time)
+    {
+        _extiction = true;
+        GetObject((int)Objects.Bg).gameObject.SetActive(false);
+        GetImage((int)Images.Circle).gameObject.SetActive(true);
+        GetImage((int)Images.CircleSlider).fillAmount = 1f;
+        StartCoroutine(StartExtiction(time));
+    }
+    private void ReVisiable()
+    {
+        _extiction = false;
+        GetObject((int)Objects.Bg).gameObject.SetActive(true);
+        GetImage((int)Images.Circle).gameObject.SetActive(false);
+    }
+    private IEnumerator StartExtiction(float time)
+    {
+        float cur = time;
+        while (cur > 0)
+        {
+            GetImage((int)Images.CircleSlider).fillAmount = cur/time;
+            GetText((int)Texts.Count_Txt).text = $"{cur.ToString("F1")}√ ";
+            cur -= Time.deltaTime;
+            yield return null;
+        }
+        ReVisiable();
+    }
+
+    public void SetPanelColor(Color color)
+    {
+        GetImage((int)Images.SkillPanel).gameObject.SetActive(true);
+        GetImage((int)Images.SkillPanel).color = color;
+
+    }
+    public void DePanelColor()
+    {
+        Debug.Log("DePanel");
+        GetImage((int)Images.SkillPanel).gameObject.SetActive(false);
     }
     public void MissionDeSet()
     {

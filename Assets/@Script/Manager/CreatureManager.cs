@@ -64,7 +64,7 @@ public class CreatureManager
         float minValue = float.MaxValue;
         foreach(PlayerController player in _playerList)
         {
-            if (pla == player)
+            if (pla == player || player._die == true)
                 continue;
 
             float curValue = Vector2.Distance(monster.transform.position, player.transform.position);

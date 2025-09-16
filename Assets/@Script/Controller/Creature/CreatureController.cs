@@ -18,7 +18,7 @@ public class CreatureController : BaseController
     public SpriteRenderer sp;
     public Animator anim;
     public Rigidbody2D rb;
-
+    public Collider2D col;
     public float Speed { get; protected set; }
     private Coroutine _poison;
 
@@ -40,6 +40,7 @@ public class CreatureController : BaseController
         sp = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
         _skill = GetComponent<Skill_Base>();
 
         return true;

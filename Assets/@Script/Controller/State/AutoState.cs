@@ -77,7 +77,7 @@ public class AutoState : StateController
     }
     private IEnumerator AutoSkill()
     {
-        Skill[] skills = (Skill[])System.Enum.GetValues(typeof(Skill));
+        Skill[] skills = new Skill[4] { Skill.Skill1, Skill.Skill2, Skill.Skill3, Skill.Skill4 };
         while (true)
         {
             while(player.State != Define.State.Attack)

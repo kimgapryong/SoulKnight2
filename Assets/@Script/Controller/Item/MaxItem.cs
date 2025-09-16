@@ -11,7 +11,10 @@ public class MaxItem : Item_Base
         if(player == null)
             return;
 
+        player.sp.color = Color.white;  
         player._status.CurHp = player._status.Hp;
         player._die = false;
+        player.anim.enabled = true;
+
     }
 }

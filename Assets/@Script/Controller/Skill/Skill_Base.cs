@@ -28,7 +28,7 @@ public abstract class Skill_Base : BaseController
         SetInfo();
         return true;
     }
-    private void SetData()
+    protected virtual void SetData()
     {
         foreach(Define.Skill skill in System.Enum.GetValues(typeof(Define.Skill)))
         {

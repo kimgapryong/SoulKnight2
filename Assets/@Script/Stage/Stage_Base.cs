@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Stage_Base : BaseController
@@ -7,6 +8,7 @@ public class Stage_Base : BaseController
     public Dictionary<Define.MonsterType, bool> _monCheckDic = new Dictionary<Define.MonsterType, bool>();
     public int[] monValues;
     private bool _stop;
+    private bool checkDie;
     public override bool Init()
     {
         if(base.Init() == false)
@@ -28,7 +30,17 @@ public class Stage_Base : BaseController
 
     private void Update()
     {
-        if(_stop)
+        if (Manager.Creature._playerList.All(player => player._die))
+        {
+            if(checkDie)
+                return;
+
+            checkDie = true;
+            Manager.UI.ShowPopUI<DiePop>();
+        }
+
+
+        if (_stop)
             return;
 
         bool allTrue = true;

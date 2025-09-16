@@ -63,7 +63,6 @@ public class ProjectileController : BaseController
         else if(attker is MonsterController)
             m = collision.GetComponent<PlayerController>();
 
-        Debug.Log(m);
         if(m == null) return;
 
         Debug.Log(damage + "µ¥¹ÌÁö");

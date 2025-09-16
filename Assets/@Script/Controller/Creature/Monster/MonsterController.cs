@@ -11,6 +11,17 @@ public class MonsterController : CreatureController
     private bool sturn;
     public MonsterStatus monStatus;
     protected string animKey;
+
+    private Vector2 _dir;
+    public Vector2 Dir
+    {
+        get { return _dir; }
+        set
+        {
+            _dir = value;
+            ChangeAnim(State);
+        }
+    }
     public override bool Init()
     {
         if (base.Init() == false)
@@ -25,11 +36,11 @@ public class MonsterController : CreatureController
         if(anim == null)
             return;
         string key = "Side";
-        if (Mathf.Abs(dir.x) - Mathf.Abs(dir.y) < 0)
+        if (Mathf.Abs(Dir.x) - Mathf.Abs(Dir.y) < 0)
         {
-            if (dir.y < 0)
+            if (Dir.y < 0)
                 key = "F";
-            else if (dir.y > 0)
+            else if (Dir.y > 0)
                 key = "B";
         }
         switch (type)
@@ -57,11 +68,12 @@ public class MonsterController : CreatureController
     public override void UpdateMethod()
     {
         SearchPlayer();
-        float localY = (dir.x > 0) ? -180 : (dir.x < 0) ? 0 : transform.eulerAngles.y;
+        float localY = (Dir.x > 0) ? -180 : (Dir.x < 0) ? 0 : transform.eulerAngles.y;
         Vector3 newPos = transform.eulerAngles;
-        newPos.y = localY;
-        transform.eulerAngles = newPos;
-
+           newPos.y = localY;
+           transform.eulerAngles = newPos;
+   
+      
         switch (State)
         {
             case (Define.State.Idle):
@@ -77,7 +89,7 @@ public class MonsterController : CreatureController
     }
     protected override void Idle()
     {
-        if(sturn)
+        if(sturn || target == null)
             return;
             
         if(Vector2.Distance(transform.position, target.transform.position) <= _status.MoveArange)
@@ -146,7 +158,8 @@ public class MonsterController : CreatureController
         if(target.transform.position == null)
             return;
 
-        dir = (target.transform.position - transform.position).normalized;
+        Dir = (target.transform.position - transform.position).normalized;
+        Debug.Log(dir);
         rb.MovePosition(Vector2.MoveTowards(rb.position, target.transform.position, _status.Speed * Time.deltaTime));
     }
     private void SearchPlayer()
@@ -193,7 +206,9 @@ public class MonsterController : CreatureController
         pla.plaStatus.AddExp(monStatus.Amount);
         Manager.Game.AddMissionvalue(_type);
         Manager.Creature._monsterList.Remove(this);
-        _monsterSpwaner.m_Spwaner.Remove(this);
+
+        if(_monsterSpwaner != null)
+            _monsterSpwaner.m_Spwaner.Remove(this);
         Destroy(gameObject);
     }
     private MonsterSpwaner _monsterSpwaner;

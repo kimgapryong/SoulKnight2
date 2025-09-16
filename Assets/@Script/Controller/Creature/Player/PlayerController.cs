@@ -42,6 +42,9 @@ public class PlayerController : CreatureController
     }
     public override void UpdateMethod()
     {
+        if(_die)
+            return;
+
         if (_ai == Define.AI.Auto)
             target = Manager.Creature.SearchMonster(transform);
 
@@ -128,5 +131,15 @@ public class PlayerController : CreatureController
             _status.CurMp += 1f;
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    protected override void OnDie(CreatureController attker)
+    {
+        State = Define.State.Idle;
+        sp.color = Color.black;
+        anim.enabled = false;
+        base.OnDie(attker);
+        StopAllCoroutines();
+        
     }
 }

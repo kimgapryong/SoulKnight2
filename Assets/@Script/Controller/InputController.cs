@@ -7,13 +7,14 @@ public class InputController : BaseController
 {
     public Transform _team;
     private Vector3 worldPos;
+    public bool _canSkill = true;
     public override bool Init()
     {
         if(base.Init() == false)    
             return false;
 
         _team = GameObject.Find("Team").transform;
-
+        Manager.Input = this;
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(_team);
         return true;
@@ -36,14 +37,18 @@ public class InputController : BaseController
             Manager.Instance.ChangePlayer(Manager.Creature._playerList[2]);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
-            Manager.Skill.GetSkill(Manager.Player._type)._skillDic[Define.Skill.Skill1]?.Invoke();
-        else if (Input.GetKeyDown(KeyCode.W))
-            Manager.Skill.GetSkill(Manager.Player._type)._skillDic[Define.Skill.Skill2]?.Invoke();
-        else if (Input.GetKeyDown(KeyCode.E))
-            Manager.Skill.GetSkill(Manager.Player._type)._skillDic[Define.Skill.Skill3]?.Invoke();
-        else if (Input.GetKeyDown(KeyCode.R))
-            Manager.Skill.GetSkill(Manager.Player._type)._skillDic[Define.Skill.Skill4]?.Invoke();
+        if (_canSkill)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+                Manager.Skill.GetSkill(Manager.Player._type)._skillDic[Define.Skill.Skill1]?.Invoke();
+            else if (Input.GetKeyDown(KeyCode.W))
+                Manager.Skill.GetSkill(Manager.Player._type)._skillDic[Define.Skill.Skill2]?.Invoke();
+            else if (Input.GetKeyDown(KeyCode.E))
+                Manager.Skill.GetSkill(Manager.Player._type)._skillDic[Define.Skill.Skill3]?.Invoke();
+            else if (Input.GetKeyDown(KeyCode.R))
+                Manager.Skill.GetSkill(Manager.Player._type)._skillDic[Define.Skill.Skill4]?.Invoke();
+        }
+        
     }
     private void SetTarget()
     {

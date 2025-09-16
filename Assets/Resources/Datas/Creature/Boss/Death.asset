@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4534848816e78c54799f9bfd0539c118, type: 3}
+  m_Name: Death
+  m_EditorClassIdentifier: 
+  CreatureName: "\uB370\uC2A4\uB098\uC774\uD2B8"
+  Image: {fileID: 0}
+  Path: 
+  Level: 50
+  Exp: 0
+  Hp: 12000
+  Mp: 1000
+  Damage: 120
+  Defence: 0
+  AtkSpeed: 2
+  Speed: 9
+  Critical: 30
+  Arange: 2.6
+  MoveArange: 30
+  HeroType: 0
+  MonsterType: 0
+  Amount: 0

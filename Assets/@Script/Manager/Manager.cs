@@ -23,6 +23,7 @@ public class Manager : MonoBehaviour
     private GameManager _game = new GameManager();
     public static GameManager Game { get { return Instance._game; } }   
     public static PlayerController Player { get; private set; }
+    public static InputController Input { get;  set; }
 
     public Action ChangeAction;
     public void ChangePlayer(PlayerController player)
@@ -55,5 +56,21 @@ public class Manager : MonoBehaviour
         DontDestroyOnLoad(go);
 
         Bag.Init();
+    }
+    public void Clear()
+    {
+        Destroy(Input._team.gameObject);
+        Destroy(Input.gameObject);
+        Input = null;
+
+        Destroy(Camera.main.gameObject);
+        foreach(var pla in Creature._playerList)
+            Destroy(pla.gameObject);
+
+        Creature._playerList.Clear();
+
+        UI.CloseAllPopupUI();
+        Destroy(UI.Root.gameObject);
+       
     }
 }

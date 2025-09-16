@@ -1,18 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class BossController : MonsterController
 {
+
     public CreatureData bossData;
     public Define.Skill[] skillType;
 
     protected Action skillAction;
     public bool _useSkill;
+  
 
     // 게임 시작용
     public bool startStage;
@@ -27,14 +27,18 @@ public class BossController : MonsterController
 
         return true;
     }
+    public override void UpdateMethod()
+    {
+        base.UpdateMethod();
+    }
     protected override void ChangeAnim(Define.State type)
     {
         string key = "Side";
-        if (Mathf.Abs(dir.x) - Mathf.Abs(dir.y) < 0)
+        if (Mathf.Abs(Dir.x) - Mathf.Abs(Dir.y) < 0)
         {
-            if (dir.y < 0)
+            if (Dir.y < 0)
                 key = "F";
-            else if (dir.y > 0)
+            else if (Dir.y > 0)
                 key = "B";
         }
         switch (type)
@@ -51,6 +55,7 @@ public class BossController : MonsterController
                 anim.Play(animKey);
                 break;
         }
+        
     }
     private void BossSetData()
     {
@@ -74,11 +79,9 @@ public class BossController : MonsterController
         if (_useSkill || target == null || !startStage)
             return;
 
-        Debug.Log("왜");
         if (Vector2.Distance(transform.position, target.transform.position) <= _status.MoveArange)
         {
             State = Define.State.Move;
-            Debug.Log("왜 안들어와");
             return;
         }
     }
@@ -89,16 +92,7 @@ public class BossController : MonsterController
 
         
         anim.Play("Attack");
-        if(skillAction != null)
-        {
-            State = Define.State.Idle;
-            _useSkill = true;
-            skillAction?.Invoke();
-
-            StartCoroutine(WaitCool(2f, () => { State = Define.State.Move;  _useSkill = false; }));
-            return;
-        }
-
+    
         _atk = true;
         Ability(); // 보통 공격
         StartCoroutine(WaitCool(_status.AtkSpeed, () => { State = Define.State.Move; _atk = false; }));
@@ -108,9 +102,21 @@ public class BossController : MonsterController
     {
         while(true)
         {
-            yield return new WaitForSeconds(Random.Range(4f, 6f));
+            while (_useSkill || !startStage)
+            {
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(Random.Range(4f, 5f));
             Define.Skill curSkill = skillType[Random.Range(0, skillType.Length)];
-            skillAction = _skill._skillDic[curSkill];
+
+            State = Define.State.Idle;
+            _useSkill = true;
+            _skill._skillDic[curSkill]?.Invoke();
+
+            rb.velocity = Vector2.zero;
+            StartCoroutine(WaitCool(4f, () => { State = Define.State.Move; _useSkill = false; }));
+
         }
     }
 

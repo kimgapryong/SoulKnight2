@@ -422,6 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _team: {fileID: 0}
+  _canSkill: 1
 --- !u!4 &402677520
 Transform:
   m_ObjectHideFlags: 0
